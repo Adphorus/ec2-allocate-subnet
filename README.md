@@ -1,7 +1,17 @@
 # ec2-allocate-subnet
-###Usage: 
+Tries to allocate given number of ip addresses on the same subnet. We were able to generate 8 addresses on the same subnet within an hour of runtime.
 
-  $ python allocate.py <region> <ip_count> <is_vpc>
-###Example:
+####Usage: 
 
-  $ ./allocate.py us-east-1 5 True
+  `$ python allocate.py <region> <ip_count> <is_vpc>`
+####Example:
+
+  `$ ./allocate.py us-east-1 5 True`
+  
+####Requirements:
+  `boto`
+
+You need to have your IAM credentials on your environment. See [here](https://boto.readthedocs.org/en/latest/getting_started.html#configuring-boto-credentials).
+
+
+
