@@ -1,13 +1,11 @@
 #!/usr/bin/python -u
 
-import os
 import sys
 from collections import Counter
-
 import boto.ec2
 
 
-def get_limit(ec2, region, domain):
+def get_limit(ec2, domain):
     limit = 0
     temp_ips = []
     try:
@@ -23,7 +21,7 @@ def get_limit(ec2, region, domain):
         return limit
 
 
-def allocate(ec2, region, domain, number, tolerance):
+def allocate(ec2, domain, number, tolerance):
     eips = []
     subnets = Counter()
     for x in range(number + tolerance):
@@ -32,7 +30,6 @@ def allocate(ec2, region, domain, number, tolerance):
             eips.append(ip)
             subnets[ip.public_ip.split(".")[2]] += 1
 
-    subnet = eips[0].public_ip.split(".")[2]
     retry = False
 
     if subnets.most_common(1)[0][1] < number:
@@ -60,12 +57,8 @@ if __name__ == "__main__":
         print("Unable to connect. Check your AWS credentials.")
         sys.exit()
 
-    if is_vpc:
-        domain = "vpc"
-    else:
-        domain = None
-
-    limit = get_limit(ec2, region, domain)
+    domain = "vpc" if is_vpc else None
+    limit = get_limit(ec2, domain)
 
     if not limit:
         sys.exit()
@@ -77,7 +70,7 @@ if __name__ == "__main__":
 
     retry = True
     while retry:
-        retry, succesful_amount = allocate(ec2, region, domain, number, tolerance)
-        print("."),
+        retry, succesful_amount = allocate(ec2, domain, number, tolerance)
+        print(".")
     else:
         print("Allocated %s IP addresses" % succesful_amount)
