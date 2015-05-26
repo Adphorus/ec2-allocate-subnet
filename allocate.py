@@ -28,7 +28,7 @@ def allocate(ec2, region, domain, number, tolerance):
     subnets = Counter()
     for x in range(number + tolerance):
         if is_vpc:
-            ip = ec2.allocate_address("vpc")
+            ip = ec2.allocate_address(domain)
             eips.append(ip)
             subnets[ip.public_ip.split(".")[2]] += 1
 
