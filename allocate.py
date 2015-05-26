@@ -72,6 +72,6 @@ if __name__ == "__main__":
     retry = True
     while retry:
         retry, succesful_amount = allocate(ec2, domain, number, tolerance)
-        print(".")
+        print("."),
     else:
         print("Allocated %s IP addresses" % succesful_amount)
