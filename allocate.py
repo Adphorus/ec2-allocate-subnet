@@ -50,7 +50,7 @@ if __name__ == "__main__":
         number = int(sys.argv[2])
         is_vpc = bool(sys.argv[3])
     except:
-        print("Usage: python allocate.py <region> <ip_count> <is_vpc>")
+        print("Usage: ./allocate.py <region> <ip_count> <is_vpc>")
         print("Example: ./allocate.py us-east-1 5 True")
         sys.exit()
 
