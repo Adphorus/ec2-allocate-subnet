@@ -2,6 +2,7 @@
 
 import sys
 from collections import Counter
+
 import boto.ec2
 
 
