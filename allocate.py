@@ -35,7 +35,7 @@ def allocate(ec2, region, domain, number, tolerance):
     subnet = eips[0].public_ip.split(".")[2]
     retry = False
 
-    if subnets.most_common(1)[0][1] != number:
+    if subnets.most_common(1)[0][1] < number:
         retry = True
         for ip in eips:
             ip.release()
