@@ -3,7 +3,7 @@ Tries to allocate given number of ip addresses on the same subnet. We were able 
 
 ####Usage: 
 
-  `$ python allocate.py <region> <ip_count> <is_vpc>`
+  `$ ./allocate.py <region> <ip_count> <is_vpc>`
 ####Example:
 
   `$ ./allocate.py us-east-1 5 True`
