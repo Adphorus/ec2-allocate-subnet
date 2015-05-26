@@ -11,7 +11,7 @@ Tries to allocate given number of ip addresses on the same subnet. We were able 
 ####Requirements:
   `boto`
 
-You need to have your IAM credentials on your environment. See [here](https://boto.readthedocs.org/en/latest/getting_started.html#configuring-boto-credentials).
+You need to have your IAM credentials configured on your environment. See [here](https://boto.readthedocs.org/en/latest/getting_started.html#configuring-boto-credentials).
 
 
 
